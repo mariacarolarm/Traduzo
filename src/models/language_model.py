@@ -13,3 +13,8 @@ class LanguageModel(AbstractModel):
             'name': self.data['name'],
             'acronym': self.data['acronym'],
         }
+
+    @classmethod
+    def list_dicts(cls, query={}):
+        data = cls._collection.find(query)
+        return [cls(d).to_dict() for d in data]
