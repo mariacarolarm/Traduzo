@@ -17,4 +17,4 @@ class LanguageModel(AbstractModel):
     @classmethod
     def list_dicts(cls, query={}):
         data = cls._collection.find(query)
-        return [cls(d).to_dict() for d in data]
+        return [LanguageModel(language).to_dict() for language in data]
