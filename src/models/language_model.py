@@ -6,7 +6,7 @@ class LanguageModel(AbstractModel):
     _collection = db["languages"]
 
     def __init__(self, json_data):
-        super().__init__(json_data)
+        self.data = json_data
 
     def to_dict(self):
         return {
@@ -15,6 +15,13 @@ class LanguageModel(AbstractModel):
         }
 
     @classmethod
-    def list_dicts(cls, query={}):
-        data = cls._collection.find(query)
-        return [LanguageModel(language).to_dict() for language in data]
+    def list_dicts(cls):
+        data = cls._collection.find()
+        return [
+            {
+                'name': language['name'],
+                'acronym': language['acronym'],
+                '_id': language['_id']
+            }
+            for language in data
+        ]
