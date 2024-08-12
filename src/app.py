@@ -5,6 +5,7 @@ from controllers.admin_controller import admin_controller
 from os import environ
 from waitress import serve
 from controllers.language_controller import language_controller
+from controllers.history_controller import history_controller
 
 
 app = Flask(__name__)
@@ -13,6 +14,7 @@ app.static_folder = "views/static"
 
 app.register_blueprint(admin_controller, url_prefix="/admin")
 app.register_blueprint(language_controller)
+app.register_blueprint(history_controller)
 
 
 def start_server(host="0.0.0.0", port=8000):

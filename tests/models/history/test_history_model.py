@@ -1,7 +1,8 @@
-# import json
-# from src.models.history_model import HistoryModel
+from src.models.history_model import HistoryModel
 
 
-# Req. 7
 def test_request_history():
-    raise NotImplementedError
+    list_json = HistoryModel.list_as_json()
+
+    assert "Hello, I like videogame" in list_json
+    assert "Do you love music?" in list_json
