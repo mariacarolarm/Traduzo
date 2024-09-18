@@ -121,7 +121,7 @@ def test_history_delete_not_found(app_test, valid_user):
     assert response.json == {"error": "History not found"}
 
 
-def test_history_delete_with_same_information_user(
+def test_history_delete(
         app_test, history_data):
     history_id = history_data[0].data["_id"]
 
